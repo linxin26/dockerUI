@@ -26,6 +26,10 @@ func index(w http.ResponseWriter, r *http.Request) {
 	render(w, "template/index2.html")
 }
 
+func images(w http.ResponseWriter, r *http.Request){
+	fmt.Println("images")
+	render(w,"template/images.html")
+}
 
 
 func main() {
@@ -33,6 +37,7 @@ func main() {
 
 
 	http.HandleFunc("/index", index)
+	http.HandleFunc("/images",images)
 	http.Handle("/static/", http.FileServer(http.Dir("e:\\dockerUI")))
 	err := http.ListenAndServe(":18080", nil)
 	if err != nil {

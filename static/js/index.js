@@ -49,7 +49,17 @@ define(function(require, exports,module){
    
          init: function(){
 		     event.listener();
-		 },   
+			 process.loadData();
+		 },
+	   loadData : function(){
+		   $.ajax({
+			  url:"http://192.168.140.151:9000/dockerapi/images/json?all=0",
+			   success:function(){
+				   console.log("ajax");
+			   },
+			   dataType:"jsonp"
+		   });
+	   },
          format : function(date, fmt) {
 			var o = {
 				"M+" : date.getMonth() + 1, // 月份
