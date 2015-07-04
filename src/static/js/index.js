@@ -52,13 +52,13 @@ define(function(require, exports,module){
 			 process.loadData();
 		 },
 	   loadData : function(){
-		   $.ajax({
-			  url:"http://192.168.140.151:9000/dockerapi/images/json?all=0",
-			   success:function(){
-				   console.log("ajax");
-			   },
-			   dataType:"jsonp"
-		   });
+//		   $.ajax({
+//			  url:"http://192.168.140.151:9000/dockerapi/images/json?all=0",
+//			   success:function(){
+//				   console.log("ajax");
+//			   },
+//			   dataType:"jsonp"
+//		   });
 	   },
          format : function(date, fmt) {
 			var o = {
