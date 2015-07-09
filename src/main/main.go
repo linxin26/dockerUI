@@ -28,7 +28,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 
 func images(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("images")
-	render(w, "../template/images.html")
+	render(w, "../template/Images.html")
 }
 
 func containersJson(w http.ResponseWriter, r *http.Request){
