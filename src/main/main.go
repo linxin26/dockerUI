@@ -33,15 +33,23 @@ func images(w http.ResponseWriter, r *http.Request) {
 	render(w, "../template/Images.html")
 }
 
+func systemJson(w http.ResponseWriter,r * http.Request){
+	content , err:=http.Get("http://127.0.0.1:2375/info")
+	if(err==nil){
+		body ,_ :=ioutil.ReadAll(content.Body)
+		var buf=bytes.NewBufferString(r.FormValue("callback")+"("+string(body)+")")
+		defer content.Body.Close()
+		w.Write(buf.Bytes())
+	}
+}
+
 func containersJson(w http.ResponseWriter, r *http.Request){
 	fmt.Println("containerJson"); 
 	fmt.Printf(r.FormValue("callback"))
 	json, err:= http.Get("http://127.0.0.1:2375/containers/json")
 	if(err==nil){ 
-	body,_:= ioutil.ReadAll(json.Body)  
-//	 var buf= bytes.NewBufferString("\"result\":"+string(body)+",\"__count\": \"830\"")
-     var buf=bytes.NewBufferString(r.FormValue("callback")+"("+string(body)+")")
-//	fmt.Println(buf.Bytes())
+	body,_:= ioutil.ReadAll(json.Body)   
+     var buf=bytes.NewBufferString(r.FormValue("callback")+"("+string(body)+")") 
 	defer json.Body.Close()
 	 w.Write(buf.Bytes())
 	}
@@ -52,6 +60,11 @@ func containers(w http.ResponseWriter,r *http.Request){
 	render(w,"../template/container.html")
 }
 
+func system(w http.ResponseWriter, r * http.Request){
+	fmt.Println("system");
+	render(w,"../template/system.html")
+}
+
 func main() {
 	fmt.Println("dockerUI")
 	fmt.Println(http.FileServer(http.Dir(".")))
@@ -60,6 +73,8 @@ func main() {
 	http.HandleFunc("/images", images)
 	http.HandleFunc("/containers",containers)
 	http.HandleFunc("/containersJson",containersJson)
+	http.HandleFunc("/system",system)
+	http.HandleFunc("/systemJson",systemJson)
 
 	http.Handle("/static/", http.FileServer(http.Dir("../")))
 	err := http.ListenAndServe(":18080", nil)
