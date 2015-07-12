@@ -1,4 +1,4 @@
-﻿define(function() {
+define(function() {
 	'use strict';
 	// 全局变量
 	window.el = {
@@ -28,7 +28,8 @@
 			'jqueryEasy' : '../aec/assets/js/jquery.easy-pie-chart.min.js',
 			'jqueryGritter' : '../aec/assets/js/jquery.gritter.min.js',
 			'typeaheadBS' : '../aec/assets/js/typeahead-bs2.min.js',
-			'ace' : '../aec/assets/js/ace.min.js'
+			'ace' : '../aec/assets/js/ace.min.js',
+			'jqueryTable': '../aec/assets/js/jquery.dataTables.min.js',
 		},
 		version : v_Product,
 		preload : [ 'plugin-nocache' ],

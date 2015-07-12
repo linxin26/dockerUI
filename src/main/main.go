@@ -5,6 +5,8 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"io/ioutil"
+	"bytes"
 )
 
 type IndexData struct {
@@ -32,8 +34,17 @@ func images(w http.ResponseWriter, r *http.Request) {
 }
 
 func containersJson(w http.ResponseWriter, r *http.Request){
-	fmt.Println("containerJson");
-	render(w,"../template/data/containers.json");
+	fmt.Println("containerJson"); 
+	fmt.Printf(r.FormValue("callback"))
+	json, err:= http.Get("http://127.0.0.1:2375/containers/json")
+	if(err==nil){ 
+	body,_:= ioutil.ReadAll(json.Body)  
+//	 var buf= bytes.NewBufferString("\"result\":"+string(body)+",\"__count\": \"830\"")
+     var buf=bytes.NewBufferString(r.FormValue("callback")+"("+string(body)+")")
+//	fmt.Println(buf.Bytes())
+	defer json.Body.Close()
+	 w.Write(buf.Bytes())
+	}
 }
 
 func containers(w http.ResponseWriter,r *http.Request){
