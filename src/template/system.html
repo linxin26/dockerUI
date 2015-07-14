@@ -83,61 +83,24 @@
                         <span class="menu-text">服务器信息</span>
                     </a>
                 </li>
-
-                <li>
-                    <a href="#" class="dropdown-toggle">
-                        <i class="icon-desktop"></i>
+                 <li>
+                    <a href="images">
+                        <i class="icon-dashboard"></i>
                         <span class="menu-text">Images</span>
-
-                        <b class="arrow icon-angle-down"></b>
                     </a>
-
-                    <ul class="submenu">
-                        <li>
-                            <a href="images">
-                                <i class="icon-double-angle-right"></i>
-                                ImageInfo
-                            </a>
-                        </li>
-                        
-                    </ul>
-                </li>
+                </li> 
 				<li>
-                    <a href="#" class="dropdown-toggle">
-                        <i class="icon-list"></i>
-                        <span class="menu-text">ContainerInfo </span>
-
-                        <b class="arrow icon-angle-down"></b>
+                    <a href="containers">
+                        <i class="icon-dashboard"></i>
+                        <span class="menu-text">Containers</span>
                     </a>
-
-                    <ul class="submenu">
-                        <li>
-                            <a href="containers">
-                                <i class="icon-double-angle-right"></i>
-                                Container
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="active open">
-                    <a href="#" class="dropdown-toggle">
-                        <i class="icon-list"></i>
-                        <span class="menu-text">System</span>
-
-                        <b class="arrow icon-angle-down"></b>
+                </li>  
+				<li class="active">
+                    <a href="system">
+                        <i class="icon-dashboard"></i>
+                        <span class="menu-text"> SystemInfo </span>
                     </a>
-
-                    <ul class="submenu">
-                        <li class="active">
-                            <a href="system">
-                                <i class="icon-double-angle-right"></i>
-                                SystemInfo
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                 
-                 
+                </li> 
             </ul><!-- /.nav-list -->
 
             <div class="sidebar-collapse" id="sidebar-collapse">
@@ -160,7 +123,7 @@
                         <i class="icon-home home-icon"></i>
                         <a href="#">首页</a>
                     </li>
-                    <li class="active">ImagesInfo</li>
+                    <li class="active">SystemInfo</li>
                 </ul><!-- .breadcrumb -->
 
                 <div class="nav-search" id="nav-search">
@@ -176,11 +139,39 @@
             <div class="page-content">
                 <div class="row">
                     <div class="col-xs-12">
-                         Containers : <span id="containers"></span><br/>
-						Images : <span id="images"></span><br/>
-						Status : <span id="status"></span><br/>
-						FileSystem : <span id="fileSystem"></span><br/>
-						DockerRootDir <span id="dir"></span><br/>
+					    ID: <span id="id"></span><br/>
+						Driver: <span id="driver"></span><br/>
+						MemoryLimit: <span id="memoryLimit"></span><br/>
+						SwapLimit: <span id="swapLimit"></span><br/>
+                         Containers: <span id="containers"></span><br/>
+						Images: <span id="images"></span><br/>
+						DriverStatus: <span id="status"></span><br/>
+						FileSystem: <span id="fileSystem"></span><br/>
+						DockerRootDir: <span id="dir"></span><br/>
+						CpuCfsPeriod: <span id="cpuCfsPeriod"></span><br/>
+						CpuCfsQuota: <span id="cpuCfsQuota"></span><br/>
+						IPv4Forwarding: <span id="iPv4Forwarding"></span><br/>
+						Debug: <span id="debug"></span><br/>
+						NFd: <span id="nFd"></span><br/>
+						OomKillDisable: <span id="oomKillDisable"></span><br/>
+						NGoroutines: <span id="goroutines"></span><br/>
+						SystemTime: <span id="systemTime"></span><br/>
+						ExecutionDriver: <span id="executionDriver"></span><br/>
+						LoggingDriver: <span id="loggingDriver"></span><br/>
+						NEventsListener: <span id="nEventsListener"></span><br/>
+						KernelVersion: <span id="kernelVersion"></span><br/>
+						OperatingSystem: <span id="operatingSystem"></span><br/>
+						IndexServerAddress: <span id="indexServerAddress"></span><br/>
+						RegistryConfig: <span id="registryConfig"></span><br/>
+						IndexConfigs: <span id="indexConfigs"></span><br/>
+						InitSha1: <span id="initSha1"></span><br/>
+						InitPath: <span id="initPath"></span><br/>
+						MemTotal: <span id="memTotal"></span><br/>
+						HttpProxy: <span id="httpProxy"></span><br/>
+						NoProxy: <span id="noProxy"></span><br/>
+						Name: <span id="name"></span><br/>
+						Labels: <span id="labels"></span><br/>
+						ExperimentalBuild: <span id="experimentalBuild"></span><br/> 
 
                     </div><!-- /.col -->
                 </div><!-- /.row -->

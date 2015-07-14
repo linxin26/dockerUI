@@ -1,6 +1,8 @@
 define(function(require, exports,module){
     var $ = require('jqueryMin');  
 	require('kendoWeb'); 
+	require('jqueryTable');
+	
     var g ={ }, helper, process, event;
    
    g.node = {  
@@ -25,6 +27,8 @@ define(function(require, exports,module){
 		  //var url="http://192.168.140.151:4243/info"; 
 		   var url="containersJson"
 		   
+		$("#example").dataTable();
+		
 		  $.getJSON(url,    
            function(json){ 
 			   console.log(json)
