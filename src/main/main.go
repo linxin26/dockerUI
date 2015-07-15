@@ -3,15 +3,10 @@ package main
 import (
 	"fmt"
 	"html/template"
-	"log"
+	"log" 
+	"handler"
 	"net/http"
-	"io/ioutil"
-	"bytes"
-)
-
-type IndexData struct {
-	title string
-}
+) 
 
 func render(w http.ResponseWriter, templName string) {
 	tmpl, err := template.ParseFiles(templName)
@@ -21,60 +16,18 @@ func render(w http.ResponseWriter, templName string) {
 	}
 	tmpl.Execute(w, "dockerUI")
 	return
-}
+} 
 
-func index(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("index ")
-	render(w, "../template/index2.html")
-}
-
-func images(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("images")
-	render(w, "../template/Images.html")
-}
-
-func systemJson(w http.ResponseWriter,r * http.Request){
-	content , err:=http.Get("http://127.0.0.1:2375/info")
-	if(err==nil){
-		body ,_ :=ioutil.ReadAll(content.Body)
-		var buf=bytes.NewBufferString(r.FormValue("callback")+"("+string(body)+")")
-		defer content.Body.Close()
-		w.Write(buf.Bytes())
-	}
-}
-
-func containersJson(w http.ResponseWriter, r *http.Request){
-	fmt.Println("containerJson"); 
-	fmt.Printf(r.FormValue("callback"))
-	json, err:= http.Get("http://127.0.0.1:2375/containers/json")
-	if(err==nil){ 
-	body,_:= ioutil.ReadAll(json.Body)   
-     var buf=bytes.NewBufferString(r.FormValue("callback")+"("+string(body)+")") 
-	defer json.Body.Close()
-	 w.Write(buf.Bytes())
-	}
-}
-
-func containers(w http.ResponseWriter,r *http.Request){
-	fmt.Println("containers")
-	render(w,"../template/container.html")
-}
-
-func system(w http.ResponseWriter, r * http.Request){
-	fmt.Println("system");
-	render(w,"../template/system.html")
-}
-
-func main() {
+func main() { 
 	fmt.Println("dockerUI")
 	fmt.Println(http.FileServer(http.Dir(".")))
-
-	http.HandleFunc("/index", index)
-	http.HandleFunc("/images", images)
-	http.HandleFunc("/containers",containers)
-	http.HandleFunc("/containersJson",containersJson)
-	http.HandleFunc("/system",system)
-	http.HandleFunc("/systemJson",systemJson)
+     
+	http.HandleFunc("/index", handler.Index)
+	http.HandleFunc("/images", handler.Images)
+	http.HandleFunc("/containers",handler.Containers)
+	http.HandleFunc("/containersJson",handler.ContainersJson)
+	http.HandleFunc("/system",handler.System)
+	http.HandleFunc("/systemJson",handler.SystemJson)
 
 	http.Handle("/static/", http.FileServer(http.Dir("../")))
 	err := http.ListenAndServe(":18080", nil)
