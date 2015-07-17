@@ -9,7 +9,7 @@ import (
 ) 
 
 func Index(w http.ResponseWriter,r *http.Request){
-	render(w,"../template/index2.html")
+	render(w,"../template/index.html")
 }
 
 func render(w http.ResponseWriter, templName string){
