@@ -29,7 +29,7 @@ func Images(w http.ResponseWriter, r *http.Request) {
 }
 
 func SystemJson(w http.ResponseWriter,r * http.Request){
-	content , err:=http.Get("http://127.0.0.1:2375/info")
+	content , err:=http.Get("http://127.0.0.1:2376/info")
 	if(err==nil){
 		body ,_ :=ioutil.ReadAll(content.Body)
 		var buf=bytes.NewBufferString(r.FormValue("callback")+"("+string(body)+")")
@@ -41,7 +41,7 @@ func SystemJson(w http.ResponseWriter,r * http.Request){
 func ContainersJson(w http.ResponseWriter, r *http.Request){
 	fmt.Println("containerJson"); 
 	fmt.Printf(r.FormValue("callback"))
-	json, err:= http.Get("http://127.0.0.1:2375/containers/json")
+	json, err:= http.Get("http://127.0.0.1:2376/containers/json")
 	if(err==nil){ 
 	
 	body,_:= ioutil.ReadAll(json.Body)   

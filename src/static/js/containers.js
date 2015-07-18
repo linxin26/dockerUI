@@ -1,7 +1,7 @@
 define(function(require, exports,module){
     var $ = require('jqueryMin');  
-	require('kendoWeb'); 
-	require('jqueryTable');
+	require('kendoWeb');  
+	require('bootstrap');
 	
     var g ={ }, helper, process, event;
    
@@ -25,16 +25,7 @@ define(function(require, exports,module){
 		load : function() {  
 		  //var url="http://192.168.140.151:4243/containers/json"; 
 		  //var url="http://192.168.140.151:4243/info"; 
-		   var url="containersJson"
-		   
-		$("#example").dataTable();
-		
-		  $.getJSON(url,    
-           function(json){ 
-			   console.log(json)
-			console.log(json[0].Id)
-			
-           });			 
+		   var url="containersJson" 
 		var dataSource = new kendo.data.DataSource({
   transport: {
     read: {
@@ -74,13 +65,20 @@ $("#grid").kendoGrid({
    
    event = {
         //绑定事件
-        listener: function(){ 	
+        listener: function(){  
+		    $("button[data-target='submit']").on("click",function(e){
+				console.log(e);
+			});
+		    $("#myModal").on("hide",function(e){
+				console.log(e);
+				console.log("hidden");
+			});
 		}
    }; 
    module.exports = {
    
         init : function(){
-		    process.init();
+		    process.init(); 
 		}
    };
 });

@@ -119,6 +119,25 @@
             </script>
         </div>
 
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <input type="text"/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-target="submit">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
         <div class="main-content">
             <div class="breadcrumbs" id="breadcrumbs">
                 <script type="text/javascript">
@@ -146,7 +165,9 @@
             <div class="page-content">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h3 class="header smaller lighter blue">Images</h3>  
+                        <h3 class="header smaller lighter blue">Containers</h3>  
+						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" id="myModal" data-target="#myModal">启动容器</button> 
+						<br/>
 						<table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
 						    <thead>
 							</thead>
