@@ -25,7 +25,18 @@ func render(w http.ResponseWriter, templName string){
 
 func Images(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("images")
-	render(w, "../template/Images.html")
+	render(w, "../template/images.html")
+}
+
+func ImagesJson(w http.ResponseWriter ,r *http.Request){
+	fmt.Println("imagesJson")
+	content , err :=http.Get("http://127.0.0.1:2376/images/json")
+	if(err==nil){
+		body ,_ :=ioutil.ReadAll(content.Body)
+		var buf=bytes.NewBufferString(r.FormValue("callback")+"("+string(body)+")")
+		defer content.Body.Close()
+		w.Write(buf.Bytes())
+	}
 }
 
 func SystemJson(w http.ResponseWriter,r * http.Request){

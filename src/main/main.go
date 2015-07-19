@@ -24,6 +24,7 @@ func main() {
      
 	http.HandleFunc("/index", handler.Index)
 	http.HandleFunc("/images", handler.Images)
+	http.HandleFunc("/iamgesJson",handler.ImagesJson)
 	http.HandleFunc("/containers",handler.Containers)
 	http.HandleFunc("/containersJson",handler.ContainersJson)
 	http.HandleFunc("/system",handler.System)
